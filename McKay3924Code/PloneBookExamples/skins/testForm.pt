@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<body>
+<div metal:fill-slot="main">
+    <p>Select a content type to search for</p>
+    <form method="post" action="testResults">
+        <select name="Type">
+            <option
+   tal:repeat="value python:here.portal_catalog.uniqueValuesFor('Type')"
+   tal:content="value" />
+        </select>
+        <br />
+        <input type="submit" class="context" />
+    </form>
+</div>
+</body>
+</html>

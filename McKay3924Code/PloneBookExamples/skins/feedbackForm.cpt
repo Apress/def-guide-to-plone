@@ -1,0 +1,59 @@
+<!--
+$Id: feedbackForm.cpt,v 1.4 2004/06/07 19:23:33 andy Exp $
+Copyright: Enfold Systems
+License: http://www.enfoldsystems.com
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+lang="en-US" i18n:domain="plone"
+metal:use-macro="here/main_template/macros/master">
+  <body>
+    <div metal:fill-slot="main"
+    tal:define="errors options/state/getErrors;">
+      <p>You can contact us, by using the form below.</p>
+      <form method="post" tal:attributes="action template/id;">
+        <fieldset>
+          <legend class="legend"
+          i18n:translate="legend_feedback_form">Contact Us</legend>
+          <div class="field"
+          tal:define="error_email_address errors/email_address|nothing;"
+               tal:attributes="class python:test(error_email_address, 'field error', 'field')">
+
+            <label i18n:translate="label_email_address">Your email
+            address</label>
+            <span class="fieldRequired" title="Required"
+            i18n:attributes="title"
+            i18n:translate="label_required">(Required)</span>
+            <div class="formHelp"
+            i18n:translate="label_email_address_help">Enter your
+            email address.</div>
+            <div tal:condition="error_email_address">
+              <tal:block i18n:translate=""
+              content="error_email_address">Error</tal:block>
+            </div>
+            <input type="text" name="email_address"
+            tal:define="user context/portal_membership/getAuthenticatedMember; email user/email|nothing" 
+            tal:attributes="tabindex tabindex/next; value request/email_address|email|nothing" />
+          </div>
+          <div class="field">
+            <label i18n:translate="label_feedback_comments">
+            Comments</label>
+            <div class="formHelp" id="label_feedback_comments_help"
+            i18n:translate="label_feedback_comments_help">Enter the
+            comments you have.</div>
+            <textarea name="comments" rows="10"
+            tal:content="request/comments|nothing"
+            tal:attributes="tabindex tabindex/next;" />
+          </div>
+          <div class="formControls">
+            <input class="context" type="submit" tabindex=""
+            name="form.button.Submit" value="Submit"
+            i18n:attributes="value"
+            tal:attributes="tabindex tabindex/next;" />
+          </div>
+        </fieldset>
+        <input type="hidden" name="form.submitted" value="1" />
+      </form>
+    </div>
+  </body>
+</html>
+

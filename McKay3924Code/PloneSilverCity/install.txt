@@ -1,0 +1,14 @@
+$Id: install.txt,v 1.3 2003/12/10 01:25:48 zopezen Exp $
+Copyright: ClearWind Consulting Ltd
+
+Install SilverCity
+
+    This is the main lexing engine for PloneSilverCity. It can be found at http://silvercity.sourceforge.net/ and is a simple install, for Windows its point and click, for Linux/Unix its python setup.py install.
+
+Installation of PloneSilverCity
+
+1.  Place this directory inside the Products folder of your Plone installation.
+
+2.  Restart Plone
+
+3.  Go to plone setup, Add/Remove Products and install SilverCity

@@ -1,0 +1,49 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+
+<!-- The SilverCity box -->
+
+<div metal:define-macro="portlet">
+     
+    <tal:sclist tal:define="results python:context.portal_catalog.searchResults(portal_type='Source Code',
+                                                                              sort_on='modified',
+                                                                              sort_order='reverse',
+                                                                              review_state='published')[:5]);">
+
+    <div class="portlet" id="portlet-silvercity-last" tal:condition="not: results">
+
+        <h5 i18n:translate="box_sourcecode">Last 5 source code</h5>
+
+        <div class="portletBody">
+
+            <tal:block tal:repeat="obj results">
+
+                <div tal:define="oddrow repeat/obj/odd"
+                     tal:attributes="class python:test(oddrow, 'portletContent even', 'portletContent odd')">
+
+                    <a href=""
+                       tal:attributes="href string:${obj/getURL}/view;
+                                       title obj/Description">
+                        <span tal:replace="python:test(obj.Title, obj.Title, obj.id)"> Item title </span>
+                    </a>
+
+                    <div class="portletDetails"
+                         tal:content="python:here.toPortalTime(obj.Date)">July 7, 08:11</div>
+                </div>
+
+            </tal:block>
+
+        </div>
+
+    </div>
+
+    </tal:sclist>
+    
+</div>
+
+</body>
+
+</html>

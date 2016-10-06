@@ -1,0 +1,235 @@
+<html>
+
+<head>
+<title>The Definitive Guide to Plone, Errata</title>
+</head>
+
+<body>
+<pre>
+
+Chapter 4
+
+Page 52:
+
+    Error in text. The current text reads:
+    
+	"it won't show up in navigation or searches"
+	
+    This should read:
+    
+	"it won't show up in navigation"
+
+	
+Page 87
+
+    Error in text. The current text reads:
+    
+	"Then I deleted right slots"
+	
+    This should read:
+    
+	"Then I deleted all the content in the right_slots property."
+
+Page 89
+
+    The current text reads:
+    
+	"Selecting this folder"
+	
+    This should read:
+     
+	"De-selecting this folder"
+
+
+				
+Page 93
+
+    Error in text in the sidebar. The current text reads:
+    
+	"For the Type field, enter list."
+	
+    This should read:
+    
+	"For the Type field, enter lines."
+
+
+Chapter 5
+
+Page 123
+
+    Code is wrong. The current code reads:
+    
+	&lt;a href="http://plone.org/Members/andy/book"&gt;Link&lt;/a&gt;
+	
+    This should read:
+    
+	&lt;a href="http://plone.org/Members/andy/book" title="Plone Book"&gt;Link&lt;/a&gt;               
+    Code is wrong. The current code reads:
+    
+	&lt;a href="#" tal:attributes="href python:request.get('message', 'change', default)" /&gt;
+    
+    This should read:
+    
+	&lt;a href="#" tal:attributes="href python:request.get('message', default)" /&gt;
+	
+    And as a result text is wrong:
+    
+	"then first value will be used, which is of course change."
+    
+    Should be:
+	
+	"then first value will be used, which is of course message."
+    
+    
+	
+Chapter 7
+
+Page 181
+
+    Error in text. The current text reads 
+
+	"has a number of variables in populated using Dynamic HTML (DTML)."
+
+    This should read:
+
+	"has a number of variables in populated using Document Template Markup Language (DTML)"
+	
+
+Chapter 9
+
+Page 270-1
+
+    There is code for fixing up users called fixUsers. This code has an error. The current lines read:
+
+	if p is not Noneand p!= 'Epoz':
+	    m.setMemberProperties({'wysiwyg_editor', 'Epoz',})
+    
+    This should read:
+
+	if p is not None and p!= 'Epoz':
+	    m.setMemberProperties({'wysiwyg_editor': 'Epoz',})
+    
+
+Page 271-2
+
+    There is a code for calculating the users in a group. This code has an error. The current lines read:
+
+	group = getGroupById(group)
+
+    This should read:
+
+	group = pg.getGroupById(group)
+	
+Chapter 11
+
+Page 321
+
+    The current text reads:
+
+	"This is a title for the content type. This isn't used in Plone"
+
+    Should read:
+
+	"This is a title for the content type."                        
+	
+    The current text reads:
+    
+	"This is the action that will be called when the item is clicked in the folder lists, folder contents and so on. Usually this is the view, so enter the name of the template."
+	
+    Should read:
+    
+	"This isn't used in Plone"
+
+Page 333
+
+    Error in table:
+    
+	"The portal type as defined in the portal_types tool."
+	
+    Should read:
+    
+	"The portal type's title as defined in the portal_types tool."
+    
+Page 339
+
+    Error in code:
+    
+	"CreationDate = { "query": [start, end],"
+    
+    Should read:
+    
+	"created = { "query": [start, end],"                        
+			
+Chapter 13
+
+Page 403
+
+    Error in code. Currently reads:
+    
+	default_output_types = 'text/html',
+	
+    Should read:
+    
+	default_output_type = 'text/html',
+
+
+Page 425
+
+    Multiple errors in this script. I'll take each one...
+    
+    At the top add the following line:
+    
+	from Products.Archetypes.public import registerType, BaseContent
+    
+    The current text reads:
+	
+	from Products.Archetypes.public import Schema
+	    
+    This should read:
+    
+	from Products.Archetypes.public import Schema, BaseSchema
+    
+    The current text reads:
+    
+	from Products.Archetypes.public import IntegerWidget, StringField
+	
+    This should read:
+	
+	from Products.Archetypes.public import IntegerWidget, StringWidget
+    
+    The current text has the following line appearing twice:
+
+	    storage = SQLStorage(),
+    
+    Both of these lines should read:
+    
+	    storage = PostgreSQLStorage(),
+
+Appendix B
+
+Page 525
+
+This code has an error. The current lines read:
+
+	if p is not None and p!= 'Epoz':
+	    m.setMemberProperties({'wysiwyg_editor', 'Epoz',})
+    
+    This should read:
+
+	if p is not None and p!= 'Epoz':
+	    m.setMemberProperties({'wysiwyg_editor': 'Epoz',})
+
+Page 526
+	    
+					
+    There is a code for calculating the users in a group. This code has an error. The current lines read:
+
+	group = getGroupById(group)
+
+    This should read:
+
+	group = pg.getGroupById(group)
+</pre>
+
+</body>
+</html>

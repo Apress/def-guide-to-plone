@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="plone"
+      metal:use-macro="here/main_template/macros/master">
+
+<body>
+<div metal:fill-slot="main">
+  <tal:block
+    tal:define="
+     getPortrait nocall: here/portal_membership/getPersonalPortrait;
+     getFolder nocall: here/portal_membership/getHomeFolder
+     ">
+    <table>
+     <tal:block 
+      tal:repeat="userObj here/portal_membership/listMembers">
+       <metal:block 
+         metal:use-macro="here/user_section/macros/userSection" />
+     </tal:block>
+    </table>
+ </tal:block>        
+</div>
+</body>
+</html>

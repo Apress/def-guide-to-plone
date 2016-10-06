@@ -1,0 +1,8 @@
+[default]
+title = Site user information
+
+# note page templates do not have proxy roles
+# so you can't just bump up the proxy roles for 
+# this script, instead you can wrap the listMemberIds
+# function in a script that uses a proxy or
+# give more users access to listMemberIds

@@ -1,0 +1,38 @@
+<div metal:define-macro="userSection"
+ tal:define="userName userObj/getUserName">
+ <tr>
+   <td>
+     <img src=""
+       tal:replace="structure python: getPortrait(userName)" />
+   </td>
+   <td tal:define="prop nocall: userObj/getProperty"> 
+     <ul>
+       <li>
+         <i>Username:</i>
+         <span tal:replace="userName" />
+       </li>
+       <li>
+         <i>Full name:</i>
+         <span tal:replace="python: prop('fullname')" />
+       </li>
+       <li
+         tal:define="home python: getFolder(userName)" 
+         tal:condition="home">
+         <a href=""
+         tal:attributes="href home/absolute_url">Home Folder</a>
+       </li>
+       <li>
+         <i>Email:</i>
+         <a href="" 
+           tal:define="email python: prop('email')"
+           tal:attributes="href string:mailto:$email"
+           tal:content="email">Email</a>
+       </li>
+       <li>
+         <i>Last login time:</i>
+          <span tal:replace="python: prop('last_login_time')" />
+       </li>
+     </ul>
+   </td>
+ </tr>
+</div>

@@ -1,0 +1,8 @@
+[default]
+title = Feedback Form
+
+[validators]
+validators = validEmail 
+
+[actions]
+action.success = traverse_to:string:sendEmail
